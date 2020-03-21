@@ -21,6 +21,7 @@ library
     , text
     , time
   exposed-modules:
+    CssClass
     Frontend
   ghc-options: -Wall
 

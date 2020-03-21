@@ -15,4 +15,3 @@ library
   exposed-modules:
     Common.Route
     Common.Types
-    CssClass
