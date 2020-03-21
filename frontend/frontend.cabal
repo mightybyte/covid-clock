@@ -12,12 +12,14 @@ library
     , data-default
     , formattable
     , jsaddle
+    , mtl
     , obelisk-executable-config-lookup
     , obelisk-frontend
     , obelisk-generated-static
     , obelisk-route
     , reflex-dom
     , text
+    , time
   exposed-modules:
     Frontend
   ghc-options: -Wall
