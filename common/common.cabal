@@ -13,5 +13,5 @@ library
     , text
     , time
   exposed-modules:
-    Common.Api
     Common.Route
+    Common.Types

@@ -7,7 +7,6 @@
 module Frontend where
 
 ------------------------------------------------------------------------------
-import           Control.Monad
 import           Control.Monad.Fix
 import           Control.Monad.Trans
 import           Data.Default
@@ -18,11 +17,8 @@ import           Data.Time
 import           Data.Time.Clock
 import           Data.Time.Clock.POSIX
 import           Formattable
-import           Language.Javascript.JSaddle (eval, liftJSM)
 import           Obelisk.Frontend
-import           Obelisk.Configs
 import           Obelisk.Route
-import           Obelisk.Route.Frontend
 import           Obelisk.Generated.Static
 import           Reflex.Dom.Core
 ------------------------------------------------------------------------------
@@ -83,7 +79,7 @@ stat
   -> m ()
 stat cfg caption c = do
   elKlass "div" ("stat" <> statCfg_class cfg) $ do
-    divClass "stat__content" c
+    _ <- divClass "stat__content" c
     divClass "stat__caption" $ text caption
 
 ------------------------------------------------------------------------------
