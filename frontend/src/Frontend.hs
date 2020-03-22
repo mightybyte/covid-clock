@@ -67,8 +67,12 @@ app = do
     el "h1" $ text "COVID-19 Clock"
   elClass "section" "statistics" $ prerender_ blank $ do
     let counter c = liveCounter (dynText . fmap (runFormat intFmt)) c
-    stat def "Estimated Cases" $ counter caseCounter
-    stat (StatCfg "stat--red") "Estimated Deaths" $ counter deathCounter
+        fmt = numFmt { _nfPrec = Just (2, SigFigs) }
+        mkStat cfg nm c = stat cfg (nm <> " (one every " <>
+                                    runFormat fmt (1.0 / liveCounter_velocity c) <>
+                                    " sec)") $ counter c
+    mkStat def "Estimated Cases" caseCounter
+    mkStat (StatCfg "stat--red") "Estimated Deaths" deathCounter
 
 stat
   :: Monad m
