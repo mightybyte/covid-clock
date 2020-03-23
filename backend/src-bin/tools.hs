@@ -1,11 +1,13 @@
 module Main where
 
 ------------------------------------------------------------------------------
+import Data.Time
+import Obelisk.Backend
+import Options.Applicative
+------------------------------------------------------------------------------
 import Backend
 import Database
 import Frontend
-import Obelisk.Backend
-import Options.Applicative
 ------------------------------------------------------------------------------
 
 
@@ -15,7 +17,8 @@ main = do
   withConnection pgc $ \conn -> do
     initializeTables conn
     putStrLn "DB Tables Initialized"
-    let env = Env pgc
+    now <- getCurrentTime
+    let env = Env pgc now
     case c of
       Scrape -> runScraper env
   where

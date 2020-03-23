@@ -29,6 +29,7 @@ library
     , string-conv
     , text
     , time
+    , unordered-containers
   exposed-modules:
     Backend
     Database
@@ -60,3 +61,4 @@ executable tools
     , obelisk-backend
     , optparse-applicative
     , resource-pool
+    , time
