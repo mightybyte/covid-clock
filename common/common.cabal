@@ -8,6 +8,8 @@ library
   build-depends:
       aeson
     , base
+    , beam-core
+    , beam-migrate
     , obelisk-route
     , mtl
     , text
@@ -15,3 +17,5 @@ library
   exposed-modules:
     Common.Route
     Common.Types
+    Common.Types.Place
+    Common.Types.Report
