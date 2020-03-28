@@ -57,12 +57,22 @@ data StatCfg = StatCfg
 instance Default StatCfg where
   def = StatCfg mempty
 
+data Reading = Reading
+  { readingDate :: Day
+  , readingValue :: Integer
+  , readingDelta :: Integer
+  }
+
+readingToCounter :: Reading -> LiveCounter Double
+readingToCounter (Reading d v dv) =
+  LiveCounter (utcTimeToPOSIXSeconds $ UTCTime d 0) (fromIntegral v) (fromIntegral dv / 86400)
+
 app
   :: (DomBuilder t m, Prerender js t m)
   => m ()
 app = do
-  let caseCounter = LiveCounter 1584748800 272166 0.340949074
-  let deathCounter = LiveCounter 1584748800 11299 0.016574074
+  let caseCounter = readingToCounter $ Reading (fromGregorian 2020 3 28) 593291 63700
+  let deathCounter = readingToCounter $ Reading (fromGregorian 2020 3 28) 27198 3228
   elClass "section" "page-title" $ do
     el "h1" $ text "COVID-19 Clock"
   elClass "section" "statistics" $ prerender_ blank $ do

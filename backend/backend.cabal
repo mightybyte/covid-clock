@@ -17,6 +17,7 @@ library
     , cassava
     , common
     , containers
+    , errors
     , frontend
     , http-streams
     , io-streams

@@ -19,3 +19,4 @@ library
     Common.Types
     Common.Types.Place
     Common.Types.Report
+    SEIR

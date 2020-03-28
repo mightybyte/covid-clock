@@ -38,7 +38,7 @@ migratableDb = defaultMigratableDbSettings `withDbModification` dbModification
   { _covidDb_places = modifyCheckedTable (T.toLower . T.drop 8) checkedTableModification
     { place_id = "id"
     , place_country = "country"
-    , place_state = "state"
+    , place_region = "region"
     , place_lat = "lat"
     , place_lon = "lon"
     }

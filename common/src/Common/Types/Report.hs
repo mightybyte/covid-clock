@@ -19,7 +19,8 @@ module Common.Types.Report where
 ------------------------------------------------------------------------------
 import           Data.Aeson
 import           Data.Text (Text)
-import           Data.Time.Clock (UTCTime)
+import           Data.Time
+--import           Data.Time.Clock (UTCTime)
 import           Database.Beam
 ------------------------------------------------------------------------------
 import           Common.Types.Place
@@ -29,7 +30,7 @@ import           Common.Types.Place
 data ReportT f = Report
   { report_timestamp :: C f UTCTime
   , report_place :: PrimaryKey PlaceT f
-  , report_asOf :: C f UTCTime
+  , report_asOf :: C f Day
   , report_confirmed :: C f Int
   , report_deaths :: C f Int
   , report_recovered :: C f Int
@@ -56,7 +57,7 @@ instance FromJSON Report
 instance Beamable ReportT
 
 instance Table ReportT where
-  data PrimaryKey ReportT f = ReportKey (C f UTCTime) (PrimaryKey PlaceT f) (C f UTCTime)
+  data PrimaryKey ReportT f = ReportKey (C f UTCTime) (PrimaryKey PlaceT f) (C f Day)
     deriving (Generic, Beamable)
   -- The Applicative instance for (->) is really convenient here
   primaryKey = ReportKey <$> report_timestamp <*> report_place <*> report_asOf

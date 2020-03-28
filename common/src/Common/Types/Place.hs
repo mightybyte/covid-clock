@@ -27,7 +27,7 @@ import           Database.Beam.Backend.SQL.Types
 data PlaceT f = Place
   { place_id :: C f (SqlSerial Int)
   , place_country :: C f Text
-  , place_state :: C f (Maybe Text)
+  , place_region :: C f (Maybe Text)
   , place_lat :: C f Double
   , place_lon :: C f Double
   } deriving (Generic)
