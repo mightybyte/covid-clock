@@ -71,8 +71,8 @@ app
   :: (DomBuilder t m, Prerender js t m)
   => m ()
 app = do
-  let caseCounter = readingToCounter $ Reading (fromGregorian 2020 3 28) 593291 63700
-  let deathCounter = readingToCounter $ Reading (fromGregorian 2020 3 28) 27198 3228
+  let caseCounter = readingToCounter $ Reading (fromGregorian 2020 4 8) 1426096 80995
+  let deathCounter = readingToCounter $ Reading (fromGregorian 2020 4 8) 81865 7300
   elClass "section" "page-title" $ do
     el "h1" $ text "COVID-19 Clock"
   elClass "section" "statistics" $ prerender_ blank $ do
